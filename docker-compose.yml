@@ -1,0 +1,8 @@
+services:
+  fatfinger:
+    build: .
+    ports:
+      - "1122:5000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped

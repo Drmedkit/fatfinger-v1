@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import path from "path";
 import fs from "fs";
+import { appendToSheet } from "../server/sheets";
 
 const app = express();
 
@@ -42,8 +43,21 @@ app.use((req, res, next) => {
   next();
 });
 
-// Register API routes (no routes defined yet, but the structure is ready)
-// Routes would be added here with app.get("/api/...", handler)
+app.post("/api/contact", async (req, res) => {
+  const { naam, email, telefoon, bericht } = req.body;
+
+  if (!naam || !email || !bericht) {
+    return res.status(400).json({ message: "Verplichte velden ontbreken" });
+  }
+
+  try {
+    await appendToSheet({ naam, email, telefoon, bericht });
+    return res.status(200).json({ ok: true });
+  } catch (err) {
+    console.error("Google Sheets error:", err);
+    return res.status(500).json({ message: "Kon bericht niet opslaan" });
+  }
+});
 
 // Error handler
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {

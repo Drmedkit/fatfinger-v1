@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Menu } from "lucide-react";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 const logo = "/images/Fat-Finger-logo_1763898136388.png";
@@ -12,12 +13,29 @@ import { ServicesSection } from "@/components/home/ServicesSection";
 import { ContactSection } from "@/components/home/ContactSection";
 
 export default function Home() {
+  const [logoHovered, setLogoHovered] = useState(false);
+
   return (
     <div className="w-full text-white selection:bg-white/30">
       {/* Navigation (Fixed) */}
       <header className="fixed top-0 left-0 w-full p-6 z-50 flex justify-between items-center pointer-events-none">
-        <div className="drop-shadow-md pointer-events-auto">
+        <div
+          className="drop-shadow-md pointer-events-auto relative"
+          onMouseEnter={() => setLogoHovered(true)}
+          onMouseLeave={() => setLogoHovered(false)}
+        >
           <img src={logo} alt="Fat Finger Logo" className="h-12 md:h-16 w-auto object-contain cursor-pointer" />
+          <span
+            className="absolute top-1/2 whitespace-nowrap text-white text-sm italic pointer-events-none select-none drop-shadow-md"
+            style={{
+              left: "calc(100% + 12px)",
+              transform: `translateY(-50%) translateX(${logoHovered ? "0px" : "-6px"})`,
+              opacity: logoHovered ? 1 : 0,
+              transition: "opacity 0.3s ease, transform 0.3s ease",
+            }}
+          >
+            een dikke vinger naar saaie, vlakke projecten
+          </span>
         </div>
         <nav className="hidden md:flex gap-6 font-medium text-sm tracking-wider bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 pointer-events-auto shadow-lg">
           <button onClick={() => document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-white/80 transition-colors cursor-pointer">ONS VERHAAL</button>

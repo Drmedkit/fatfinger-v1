@@ -1,20 +1,15 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-// Club MPH
-import clubMphVideo from "@assets/ClubMPH.mp4";
-
 // Poolparty
 import poolpartyBg from "@assets/decibel_edmkevin.jpg";
 
 // Club 7
-import club7Video from "@assets/Club7vsPaulo.mp4";
 import club7_1 from "@assets/club7_1.jpg";
 import club7_2 from "@assets/club7_2.jpg";
 import club7_3 from "@assets/club7_3.jpg";
 
 // Decibel
-import decibelVideo from "@assets/DecibelWakeup.mp4";
 import decibelSpark1 from "@assets/decibel_spark1.jpg";
 import decibelSpark2 from "@assets/decibel_spark2.jpg";
 import decibelRichard from "@assets/decibel_richard.jpg";
@@ -57,10 +52,12 @@ function ClubMPHSection() {
             {/* Looping video background */}
             <motion.div className="absolute inset-0 z-0" style={{ y }}>
                 <video
-                    src={clubMphVideo}
                     autoPlay muted loop playsInline
                     className="w-full h-full object-cover scale-110"
-                />
+                >
+                    <source src="/videos/ClubMPH_mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
+                    <source src="/videos/ClubMPH_desktop.mp4" type="video/mp4" />
+                </video>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/20" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
             </motion.div>
@@ -228,10 +225,12 @@ function Club7Section() {
                                 style={{ boxShadow: "0 0 40px rgba(243,115,172,0.3), 0 0 80px rgba(254,242,0,0.15)" }}
                             >
                                 <video
-                                    src={club7Video}
                                     autoPlay muted loop playsInline
                                     className="w-full h-full object-cover"
-                                />
+                                >
+                                    <source src="/videos/Club7vsPaulo_mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
+                                    <source src="/videos/Club7vsPaulo_desktop.mp4" type="video/mp4" />
+                                </video>
                             </div>
                         </div>
                     </motion.div>
@@ -335,10 +334,12 @@ function DecibelSection() {
                             style={{ boxShadow: "0 0 80px rgba(0,242,254,0.15), 0 0 160px rgba(0,242,254,0.05)", border: "1px solid rgba(0,242,254,0.2)" }}
                         >
                             <video
-                                src={decibelVideo}
                                 autoPlay muted loop playsInline
                                 className="w-full h-auto"
-                            />
+                            >
+                                <source src="/videos/DecibelWakeup_mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
+                                <source src="/videos/DecibelWakeup_desktop.mp4" type="video/mp4" />
+                            </video>
                         </div>
                     </motion.div>
                 </div>

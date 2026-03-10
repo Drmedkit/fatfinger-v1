@@ -139,17 +139,6 @@ export function HeroSection() {
               <Instagram className="w-4 h-4" />
               INSTA
             </motion.a>
-            <Link href="/portfolio">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 rounded-full font-medium transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer relative"
-                data-testid="button-portfolio-desktop"
-              >
-                PORTFOLIO
-                <ArrowRight className="w-4 h-4" />
-              </motion.div>
-            </Link>
           </div>
         </motion.div>
 
@@ -200,17 +189,6 @@ export function HeroSection() {
             <Instagram className="w-4 h-4" />
             INSTA
           </motion.a>
-          <Link href="/portfolio">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 rounded-full font-medium transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer relative"
-              data-testid="button-portfolio-mobile"
-            >
-              PORTFOLIO
-              <ArrowRight className="w-4 h-4" />
-            </motion.div>
-          </Link>
         </motion.div>
 
       </main>

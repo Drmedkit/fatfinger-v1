@@ -203,11 +203,6 @@ export function VibeSection() {
                                 </motion.div>
                             </AnimatePresence>
 
-                            {/* Additional text placeholder for the user */}
-                            <div className="mt-8 p-4 border-l-2 border-[#00f2fe]/50 bg-white/5 rounded-r cursor-pointer hover:bg-white/10 transition-colors">
-                                <p className="opacity-80 italic text-sm mb-1">[Placeholder for additional text provided by user]</p>
-                                <p className="opacity-95 font-medium">Extra text area for custom messages or extended vibes.</p>
-                            </div>
                         </div>
                     </motion.div>
 

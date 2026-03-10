@@ -4,24 +4,24 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const SERVICES = [
     {
         id: "01",
-        title: "(Merk) activatie",
-        description: "Wil jij dat jouw merk goed opgemerkt wordt? Wij bedenken een creatieve en strategische activatie van jouw merk of product die echt impact maakt. Merk versterkende ervaringen, variërend van evenementen en promoties, tot campagnes of festival-activaties. Ons doel? Een onvergetelijke indruk.",
-        tags: ["Bijzondere ervaringen", "Campagnes & live events", "Guerilla style"],
-        theme: "from-cyan-400 to-blue-600"
-    },
-    {
-        id: "02",
-        title: "Pop-up party",
-        description: "Een feestelijke take-over op jouw bruiloft. Een pop-up badhuisrave op de camping van een festival. Van saaie lijnbus naar pop-up partybus. Een hidden stage op een festival die een paar keer per dag helemaal los gaat. Wij zorgen voor graag voor het what-the-f*ck?! moment op jouw evenement. Wij poppen op waar, en wanneer je maar wilt.",
-        tags: ["Conceptontwikkeling", "Surprise effects", "Design & productie"],
-        theme: "from-pink-500 to-rose-500"
-    },
-    {
-        id: "03",
         title: "Concepting",
         description: "Nieuw, gek of innovatief concept nodig? Laat de brainstorm aan ons over! Geef ons jouw input, en onze idee-machines presenteren meerdere concepten. We staan ook klaar om deze van A tot Z te produceren. \"We put the art in party\"",
         tags: ["Out of the box", "Crowd engagement", "Maatwerk"],
         theme: "from-amber-400 to-orange-500"
+    },
+    {
+        id: "02",
+        title: "Business event",
+        description: "Serious business. Al zorgen wij voor genoeg fun en jolijt, wij begrijpen dat zaken soms zaken zijn. Maar wat denk je van een niet-zo-standaard business event? Wil je eens een andere vorm proberen? Wég met de standaard plenaire sessies en saaie netwerkborrels. Laat ons met je meedenken en wij zorgen ervoor dat de informatie écht doordringt en mensen dieper en sneller met elkaar in contact komen.",
+        tags: ["Design & Productie", "Eventcommunicatie", "Live event management"],
+        theme: "from-slate-700 to-slate-900"
+    },
+    {
+        id: "03",
+        title: "Personeelsfeest",
+        description: "Met een personeelsfeest of teambuilding wil je collega’s zo veel mogelijk met elkaar laten bonden en activeren. Bereik je dit met een bowlingavond of barbecue op het hoofdkantoor? Nee bedankt. Wij weten wat écht indruk maakt en wat wél leuk is. Want wij willen actie. Wij willen waardering en party! Met een uniek thema, concept of ervaring, van uitnodiging tot uitvoering; wij verzorgen dit tot in de puntjes.",
+        tags: ["Teambuilding", "Unieke settings", "Fatte bonding"],
+        theme: "from-emerald-400 to-teal-600"
     },
     {
         id: "04",
@@ -32,17 +32,17 @@ const SERVICES = [
     },
     {
         id: "05",
-        title: "Business event",
-        description: "Serious business. Al zorgen wij voor genoeg fun en jolijt, wij begrijpen dat zaken soms zaken zijn. Maar wat denk je van een niet-zo-standaard business event? Wil je eens een andere vorm proberen? Wég met de standaard plenaire sessies en saaie netwerkborrels. Laat ons met je meedenken en wij zorgen ervoor dat de informatie écht doordringt en mensen dieper en sneller met elkaar in contact komen.",
-        tags: ["Design & Productie", "Eventcommunicatie", "Live event management"],
-        theme: "from-slate-700 to-slate-900"
+        title: "(Merk) activatie",
+        description: "Wil jij dat jouw merk goed opgemerkt wordt? Wij bedenken een creatieve en strategische activatie van jouw merk of product die echt impact maakt. Merk versterkende ervaringen, variërend van evenementen en promoties, tot campagnes of festival-activaties. Ons doel? Een onvergetelijke indruk.",
+        tags: ["Bijzondere ervaringen", "Campagnes & live events", "Guerilla style"],
+        theme: "from-cyan-400 to-blue-600"
     },
     {
         id: "06",
-        title: "Personeelsfeest",
-        description: "Met een personeelsfeest of teambuilding wil je collega’s zo veel mogelijk met elkaar laten bonden en activeren. Bereik je dit met een bowlingavond of barbecue op het hoofdkantoor? Nee bedankt. Wij weten wat écht indruk maakt en wat wél leuk is. Want wij willen actie. Wij willen waardering en party! Met een uniek thema, concept of ervaring, van uitnodiging tot uitvoering; wij verzorgen dit tot in de puntjes.",
-        tags: ["Teambuilding", "Unieke settings", "Fatte bonding"],
-        theme: "from-emerald-400 to-teal-600"
+        title: "Pop-up party",
+        description: "Een feestelijke take-over op jouw bruiloft. Een pop-up badhuisrave op de camping van een festival. Van saaie lijnbus naar pop-up partybus. Een hidden stage op een festival die een paar keer per dag helemaal los gaat. Wij zorgen voor graag voor het what-the-f*ck?! moment op jouw evenement. Wij poppen op waar, en wanneer je maar wilt.",
+        tags: ["Conceptontwikkeling", "Surprise effects", "Design & productie"],
+        theme: "from-pink-500 to-rose-500"
     }
 ];
 

@@ -21,18 +21,29 @@ export function AboutSection() {
 
                         <div className="space-y-6 text-lg font-light leading-relaxed opacity-90">
                             <p>
-                                Het begon ooit aan een keukentafel, een week voor Koningsdag 2019. In plaats van weer rond te slenteren, besloten Karlijn en Lonneke — de OG’s van het eerste uur — iets geks te doen: een pop-up rave midden op straat in Amsterdam. Club 7 Alles Geven was geboren. Met wat tape, speakers en lef. En het werkte: het dak ging eraf. De Zon Festival pikte het op, en zo ontstond Fat Finger.
+                                Club 7 Alles Geven —het eerste concept van Fat Finger— begon als een uit de hand gelopen grap. Het begon aan een keukentafel. Een week voor Koningsdag 2019. In plaats van weer doelloos rond te slenteren door de stad werd er een pop-up rave georganiseerd, midden op straat in Amsterdam. Met tape, een paar speakers en een tent die van ‘s ochtends vroeg tot ‘s avonds laat vol stond: Club 7 Alles Geven was geboren. Het dak ging eraf. Letterlijk en figuurlijk. De Zon Festival pikte het op.. en zo werd Club 7 Alles Geven officieel, en ontstond Fat Finger.
                             </p>
                             <p>
-                                Fast forward naar nu: talloze concepten, producties en een flinke dosis ervaring verder. Diezelfde energie gebruiken we vandaag om (bedrijfs­)evenementen tot leven te brengen, met fun, creativiteit en een flinke scheut eigenzinnigheid. Want waarom zou je een standaard event organiseren, als het ook memorabel, verrassend en vol beleving kan zijn?
+                                Zeven minuten alles geven op festivals. Het bleek een hit. En we kwamen erachter dat creatieve feesten bedenken en organiseren iets is waar we goed in zijn. De naam Fat Finger is dan ook geen toeval. Het is onze dikke vinger naar saaie, vlakke en voorspelbare projecten. Zelfs het saaiste congres kan je opleuken.
+                            </p>
+                            <p>
+                                Fast forward naar nu. Talloze concepten, producties en ervaringen verder. En een enorme drive om evenementen tot leven te brengen. Van bedrijfsfestivals en personeelsfeesten tot congressen en teambuilding weekenden. Altijd met fun, creativiteit en een gezonde dosis eigenzinnigheid.
                             </p>
                         </div>
 
-                        {/* Added a placeholder here for the user's additional text */}
-                        <div className="mt-8 p-6 bg-[#00f2fe]/10 border border-[#00f2fe]/30 rounded-[1.5rem] backdrop-blur-sm cursor-text transition-colors hover:bg-[#00f2fe]/20">
-                            <h4 className="text-[#00f2fe] font-bold mb-2">Jouw Visie Hier</h4>
-                            <p className="opacity-80 italic text-sm">
-                                [Dit vak is gereserveerd voor extra tekst of content. Klik hier of stuur de gewenste inhoud op om dit uit te breiden.]
+                        <div className="mt-8 pt-8 border-t border-white/10 space-y-4">
+                            <h3 className="font-display text-2xl md:text-3xl text-[#f093fb] font-bold uppercase">Over ons</h3>
+                            <p className="text-lg font-light leading-relaxed opacity-90">
+                                Wij zijn Karlijn en Lonneke. Twee vriendinnen die elkaar 25 jaar geleden leerden kennen op de middelbare school.
+                            </p>
+                            <p className="text-lg font-light leading-relaxed opacity-90">
+                                Fat Finger is het resultaat van twee werelden die perfect samenkomen. Karlijn brengt haar achtergrond als communicatieadviseur en haar creatieve blik vanuit de modeacademie mee. Taaie inhoud wordt door haar vertaald naar luchtige, visuele en aansprekende concepten. Als voormalig verloskundige is Lonneke gewend aan hard werken, schakelen onder druk en altijd aanstaan. Binnen Fat Finger kan ze haar creativiteit en energie volledig kwijt.
+                            </p>
+                            <p className="text-lg font-light leading-relaxed opacity-90">
+                                Samen bedenken we alle concepten. Samen bouwen we ze uit. We kennen elkaar al zo lang en zo goed dat samenwerken vanzelf gaat. We vullen elkaar aan, lezen elkaar zonder woorden en doen dit sinds 2019 alsof we nooit anders hebben gedaan. Uiteraard doen we dit niet alleen — wij hebben een hele groep enorme toppers om ons heen verzameld die zich ieder event voor 1000% inzetten.
+                            </p>
+                            <p className="text-lg font-light leading-relaxed opacity-90 italic">
+                                Dus zoek je een event dat anders durft te zijn? Out of the box. Met inhoud én fun. Dan weet je ons te vinden.
                             </p>
                         </div>
 

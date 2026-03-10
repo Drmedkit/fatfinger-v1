@@ -15,13 +15,18 @@ export function ContactSection() {
                 <div className="grid md:grid-cols-2 gap-8 text-left max-w-2xl mx-auto pt-12">
                     <div className="space-y-2">
                         <h4 className="font-bold text-xl mb-4 text-[#f093fb]">CONTACT</h4>
-                        <a href="mailto:hello@fatfinger.nl" className="block opacity-80 hover:text-white transition-colors cursor-pointer">hello@fatfinger.nl</a>
-                        <a href="tel:+31646631269" className="block opacity-80 hover:text-white transition-colors cursor-pointer">+31 (0)6 4663 1269</a>
+                        <a href="mailto:fatfingernl@gmail.com" className="block opacity-80 hover:text-white transition-colors cursor-pointer">fatfingernl@gmail.com</a>
+                        <a href="tel:+31646631269" className="block opacity-80 hover:text-white transition-colors cursor-pointer">06-46631269</a>
+                        <a href="https://wa.me/31646631269" target="_blank" rel="noopener noreferrer" className="block opacity-80 hover:text-white transition-colors cursor-pointer">WhatsApp</a>
+                        <a href="https://instagram.com/fatfingernl" target="_blank" rel="noopener noreferrer" className="block opacity-80 hover:text-white transition-colors cursor-pointer">@fatfingernl</a>
+                        <a href="https://www.youtube.com/@FATFINGER-zf7gp" target="_blank" rel="noopener noreferrer" className="block opacity-80 hover:text-white transition-colors cursor-pointer">YouTube @FATFINGER</a>
                     </div>
                     <div className="space-y-2">
                         <h4 className="font-bold text-xl mb-4 text-[#43e97b]">ADRES</h4>
-                        <p className="opacity-80">Party Straat 123</p>
-                        <p className="opacity-80">1000 AA Amsterdam</p>
+                        <p className="opacity-80">Johan Maurits van Nassaulaan 12</p>
+                        <p className="opacity-80">2071 VC Santpoort Noord</p>
+                        <p className="opacity-60 text-sm mt-4">KVK 75088509</p>
+                        <p className="opacity-60 text-sm">BTW NL860137569B01</p>
                     </div>
                 </div>
 

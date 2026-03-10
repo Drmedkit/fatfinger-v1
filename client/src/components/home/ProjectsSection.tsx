@@ -1,5 +1,6 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 
 // Poolparty
 const poolpartyBg = "/images/decibel_edmkevin.jpg";
@@ -151,6 +152,15 @@ function PoolpartySection() {
 
 // ─── CLUB 7 — diagonale banden (Club 7 stijl) + portret video ───────────────
 function Club7Section() {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [muted, setMuted] = useState(true);
+
+    function toggleSound() {
+        if (!videoRef.current) return;
+        const next = !muted;
+        videoRef.current.muted = next;
+        setMuted(next);
+    }
     return (
         <section className="relative w-full min-h-screen overflow-hidden bg-black flex items-center">
             {/* Fade edges */}
@@ -221,16 +231,48 @@ function Club7Section() {
                     >
                         <div className="w-full max-w-xs sm:max-w-sm">
                             <div
-                                className="aspect-[9/16] rounded-2xl overflow-hidden border border-white/10"
+                                className="relative aspect-[9/16] rounded-2xl overflow-hidden border border-white/10 cursor-pointer"
                                 style={{ boxShadow: "0 0 40px rgba(243,115,172,0.3), 0 0 80px rgba(254,242,0,0.15)" }}
+                                onClick={toggleSound}
                             >
                                 <video
+                                    ref={videoRef}
                                     autoPlay muted loop playsInline
                                     className="w-full h-full object-cover"
                                 >
                                     <source src="/videos/Club7vsPaulo_mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
                                     <source src="/videos/Club7vsPaulo_desktop.mp4" type="video/mp4" />
                                 </video>
+                                {/* Sound hint */}
+                                <div className="absolute bottom-3 right-3 z-10">
+                                    <AnimatePresence mode="wait">
+                                        {muted ? (
+                                            <motion.div
+                                                key="muted"
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                animate={{ opacity: 1, scale: [1, 1.1, 1] }}
+                                                exit={{ opacity: 0, scale: 0.8 }}
+                                                transition={{ duration: 0.3, scale: { repeat: Infinity, duration: 2 } }}
+                                                className="flex items-center gap-1.5 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full border border-white/20"
+                                            >
+                                                <VolumeX size={12} />
+                                                <span>tik voor geluid</span>
+                                            </motion.div>
+                                        ) : (
+                                            <motion.div
+                                                key="unmuted"
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                exit={{ opacity: 0, scale: 0.8 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="flex items-center gap-1.5 bg-black/60 backdrop-blur-sm text-[#FEF200] text-xs px-3 py-1.5 rounded-full border border-[#FEF200]/30"
+                                            >
+                                                <Volume2 size={12} />
+                                                <span>geluid aan</span>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
                             </div>
                         </div>
                     </motion.div>
@@ -243,6 +285,15 @@ function Club7Section() {
 
 // ─── DECIBEL — donker, bubbles, gestapelde foto's + video ───────────────────
 function DecibelSection() {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [muted, setMuted] = useState(true);
+
+    function toggleSound() {
+        if (!videoRef.current) return;
+        const next = !muted;
+        videoRef.current.muted = next;
+        setMuted(next);
+    }
     return (
         <section className="relative w-full min-h-screen overflow-hidden flex items-center"
             style={{ background: "linear-gradient(135deg, #040d14 0%, #081828 50%, #040d14 100%)" }}
@@ -330,16 +381,48 @@ function DecibelSection() {
                         transition={{ duration: 0.9, delay: 0.15 }}
                     >
                         <div
-                            className="relative rounded-2xl overflow-hidden"
+                            className="relative rounded-2xl overflow-hidden cursor-pointer"
                             style={{ boxShadow: "0 0 80px rgba(0,242,254,0.15), 0 0 160px rgba(0,242,254,0.05)", border: "1px solid rgba(0,242,254,0.2)" }}
+                            onClick={toggleSound}
                         >
                             <video
+                                ref={videoRef}
                                 autoPlay muted loop playsInline
                                 className="w-full h-auto"
                             >
                                 <source src="/videos/DecibelWakeup_mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
                                 <source src="/videos/DecibelWakeup_desktop.mp4" type="video/mp4" />
                             </video>
+                            {/* Sound hint */}
+                            <div className="absolute bottom-3 right-3 z-10">
+                                <AnimatePresence mode="wait">
+                                    {muted ? (
+                                        <motion.div
+                                            key="muted"
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            animate={{ opacity: 1, scale: [1, 1.1, 1] }}
+                                            exit={{ opacity: 0, scale: 0.8 }}
+                                            transition={{ duration: 0.3, scale: { repeat: Infinity, duration: 2 } }}
+                                            className="flex items-center gap-1.5 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full border border-white/20"
+                                        >
+                                            <VolumeX size={12} />
+                                            <span>tik voor geluid</span>
+                                        </motion.div>
+                                    ) : (
+                                        <motion.div
+                                            key="unmuted"
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.8 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="flex items-center gap-1.5 bg-black/60 backdrop-blur-sm text-[#00f2fe] text-xs px-3 py-1.5 rounded-full border border-[#00f2fe]/30"
+                                        >
+                                            <Volume2 size={12} />
+                                            <span>geluid aan</span>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
                         </div>
                     </motion.div>
                 </div>

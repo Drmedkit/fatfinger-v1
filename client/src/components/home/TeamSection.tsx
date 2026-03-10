@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import teamImage from "@assets/image_1763912682595.webp";
+const teamImage = "/images/image_1763912682595.webp";
 
 export function TeamSection() {
     return (

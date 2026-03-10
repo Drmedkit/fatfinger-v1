@@ -2,20 +2,20 @@ import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Menu } from "lucide-react";
 import { Link } from "wouter";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import logo from "@assets/Fat-Finger-logo_1763898136388.png";
+const logo = "/images/Fat-Finger-logo_1763898136388.png";
 
 // Decibel Assets
-import decibel1 from "@assets/image_1763916174369.webp";
-import decibel2 from "@assets/image_1763916181000.webp";
-import decibel3 from "@assets/image_1763916185515.webp";
-import decibel4 from "@assets/image_1763916191128.webp";
+const decibel1 = "/images/image_1763916174369.webp";
+const decibel2 = "/images/image_1763916181000.webp";
+const decibel3 = "/images/image_1763916185515.webp";
+const decibel4 = "/images/image_1763916191128.webp";
 
 // Club MPH Assets
-import mph1 from "@assets/image_1763916396825.webp";
-import mph2 from "@assets/image_1763916409415.webp";
-import mph3 from "@assets/image_1763916415137.webp";
-import mph4 from "@assets/image_1763916420516.webp";
-import mph5 from "@assets/image_1763916427926.webp";
+const mph1 = "/images/image_1763916396825.webp";
+const mph2 = "/images/image_1763916409415.webp";
+const mph3 = "/images/image_1763916415137.webp";
+const mph4 = "/images/image_1763916420516.webp";
+const mph5 = "/images/image_1763916427926.webp";
 
 // Remaining projects (Others removed as requested)
 const PROJECTS = [];

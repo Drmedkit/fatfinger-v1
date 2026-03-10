@@ -1,6 +1,6 @@
 import { Menu } from "lucide-react";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import logo from "@assets/Fat-Finger-logo_1763898136388.png";
+const logo = "/images/Fat-Finger-logo_1763898136388.png";
 
 import { HeroSection } from "@/components/home/HeroSection";
 import { VibeSection } from "@/components/home/VibeSection";

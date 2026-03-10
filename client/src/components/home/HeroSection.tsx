@@ -6,10 +6,10 @@ import { ArrowRight, Instagram } from "lucide-react";
 import { Link } from "wouter";
 
 // Import assets
-import img1 from "@assets/decibel outdoor_1763896943285.jpg";
-import img2 from "@assets/Powerhourcdl02741_lr-1024x683_1763896950963.webp";
-import img3 from "@assets/Powerhourcdl02961_lr-1024x683_1763896958054.webp";
-import img4 from "@assets/Club7_Westerliefde_Eastcamp-005-1024x683_1763896976860.jpg";
+const img1 = "/images/decibel outdoor_1763896943285.jpg";
+const img2 = "/images/Powerhourcdl02741_lr-1024x683_1763896950963.webp";
+const img3 = "/images/Powerhourcdl02961_lr-1024x683_1763896958054.webp";
+const img4 = "/images/Club7_Westerliefde_Eastcamp-005-1024x683_1763896976860.jpg";
 
 // Define the slides with their matching gradients
 export const SLIDES = [

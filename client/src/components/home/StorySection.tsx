@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import club7Image from "@assets/Club7_Westerliefde_Eastcamp-005-1024x683_1763896976860.jpg";
+const club7Image = "/images/Club7_Westerliefde_Eastcamp-005-1024x683_1763896976860.jpg";
 
 export function StorySection() {
     return (

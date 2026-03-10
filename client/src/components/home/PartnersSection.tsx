@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 
 // Partner Logos
-import p1 from "@assets/pleinvrees_1763898922943.png";
-import p2 from "@assets/logo_1763898922943.webp";
-import p3 from "@assets/Mysteryland_logo_1763898922943.png";
-import p4 from "@assets/nl-mysticgardenfestival-removebg-preview_1763898922943.png";
-import p5 from "@assets/b46.AfterworkLogo_1763898922943.png";
-import p6 from "@assets/logo-oo_1763898922944.png";
-import p7 from "@assets/20243_1763898922944.png";
-import p8 from "@assets/cropped-favicon-270x270_1763898922944.png";
+const p1 = "/images/pleinvrees_1763898922943.png";
+const p2 = "/images/logo_1763898922943.webp";
+const p3 = "/images/Mysteryland_logo_1763898922943.png";
+const p4 = "/images/nl-mysticgardenfestival-removebg-preview_1763898922943.png";
+const p5 = "/images/b46.AfterworkLogo_1763898922943.png";
+const p6 = "/images/logo-oo_1763898922944.png";
+const p7 = "/images/20243_1763898922944.png";
+const p8 = "/images/cropped-favicon-270x270_1763898922944.png";
 
 function LogoMarquee() {
     const logos = [

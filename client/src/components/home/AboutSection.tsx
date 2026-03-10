@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import aboutImage from "@assets/image_1763912682595.webp";
+const aboutImage = "/images/image_1763912682595.webp";
 
 export function AboutSection() {
     return (

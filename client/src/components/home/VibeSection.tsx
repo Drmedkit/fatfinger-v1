@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
-import vibeBubbles from "@assets/20240817_121846_DECIBELOUTDOOR_RICHARD-1024x683_1763898418211.jpg";
-import vibeConfetti from "@assets/285302971_5138774592870185_1151288849466025340_n-1024x666_1763898438812.jpg";
-import vibeConference from "@assets/image_1763898462772.png";
+const vibeBubbles = "/images/20240817_121846_DECIBELOUTDOOR_RICHARD-1024x683_1763898418211.jpg";
+const vibeConfetti = "/images/285302971_5138774592870185_1151288849466025340_n-1024x666_1763898438812.jpg";
+const vibeConference = "/images/image_1763898462772.png";
 
 const VIBE_SLIDES = [
     {

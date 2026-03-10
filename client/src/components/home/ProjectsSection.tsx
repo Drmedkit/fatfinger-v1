@@ -2,17 +2,17 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 // Poolparty
-import poolpartyBg from "@assets/decibel_edmkevin.jpg";
+const poolpartyBg = "/images/decibel_edmkevin.jpg";
 
 // Club 7
-import club7_1 from "@assets/club7_1.jpg";
-import club7_2 from "@assets/club7_2.jpg";
-import club7_3 from "@assets/club7_3.jpg";
+const club7_1 = "/images/club7_1.jpg";
+const club7_2 = "/images/club7_2.jpg";
+const club7_3 = "/images/club7_3.jpg";
 
 // Decibel
-import decibelSpark1 from "@assets/decibel_spark1.jpg";
-import decibelSpark2 from "@assets/decibel_spark2.jpg";
-import decibelRichard from "@assets/decibel_richard.jpg";
+const decibelSpark1 = "/images/decibel_spark1.jpg";
+const decibelSpark2 = "/images/decibel_spark2.jpg";
+const decibelRichard = "/images/decibel_richard.jpg";
 
 // ─── SECTION HEADER ─────────────────────────────────────────────────────────
 function ProjectsHeader() {

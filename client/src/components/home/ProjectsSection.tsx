@@ -102,7 +102,7 @@ function PoolpartySection() {
             <div className="absolute top-0 left-0 right-0 h-48 z-20 pointer-events-none" style={{ background: "linear-gradient(to bottom, #000 0%, transparent 100%)" }} />
             <div className="absolute bottom-0 left-0 right-0 h-48 z-20 pointer-events-none" style={{ background: "linear-gradient(to top, #000 0%, transparent 100%)" }} />
             {/* Hero foto met parallax */}
-            <motion.div className="absolute inset-0 z-0" style={{ y }}>
+            <motion.div className="absolute inset-0 z-0 bg-[#003344]" style={{ y }}>
                 <img src={poolpartyBg} alt="Poolparty Mysteryland" loading="lazy"
                     className="w-full h-full object-cover scale-110"
                 />

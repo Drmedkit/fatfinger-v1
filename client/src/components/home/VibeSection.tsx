@@ -128,7 +128,7 @@ export function VibeSection() {
     const currentVibe = VIBE_SLIDES[activeVibeIndex] || VIBE_SLIDES[0];
 
     return (
-        <section id="vibes" className="relative min-h-screen w-full z-10 bg-background flex items-center justify-center overflow-hidden">
+        <section id="vibes" className="relative min-h-screen w-full z-10 bg-black flex items-center justify-center overflow-hidden">
             {/* Vibe Backgrounds */}
             <AnimatePresence mode="popLayout">
                 <motion.div
@@ -160,7 +160,7 @@ export function VibeSection() {
                             <div className="w-full h-full cursor-grab active:cursor-grabbing" ref={vibeRef}>
                                 <div className="flex h-full">
                                     {VIBE_SLIDES.map((slide) => (
-                                        <div key={slide.id} className="flex-[0_0_100%] min-w-0 relative">
+                                        <div key={slide.id} className="flex-[0_0_100%] min-w-0 relative bg-black">
                                             <img
                                                 src={slide.src}
                                                 alt={slide.alt}

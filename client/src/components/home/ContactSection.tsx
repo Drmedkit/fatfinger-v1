@@ -13,6 +13,18 @@ const contactSchema = z.object({
 
 type ContactForm = z.infer<typeof contactSchema>;
 
+declare global {
+    interface Window {
+        gtag?: (
+            command: "event",
+            eventName: "conversion",
+            params: { send_to: string }
+        ) => void;
+    }
+}
+
+const GOOGLE_ADS_CONVERSION_SEND_TO = "AW-18006831661/3d1UCJ2PqYwcEK3kqYpD";
+
 const TYPO_DOMAINS: Record<string, string> = {
     "gmmail.com": "gmail.com",
     "gmai.com": "gmail.com",
@@ -66,7 +78,7 @@ function useTypewriter(phrases: string[], active: boolean) {
     const [phraseIndex, setPhraseIndex] = useState(0);
     const [charIndex, setCharIndex] = useState(0);
     const [deleting, setDeleting] = useState(false);
-    const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
     useEffect(() => {
         if (!active) { setDisplayed(""); return; }
@@ -109,6 +121,12 @@ function FieldHint({ text, color }: { text: string; color: string }) {
             </motion.p>
         </AnimatePresence>
     );
+}
+
+function trackContactConversion() {
+    window.gtag?.("event", "conversion", {
+        send_to: GOOGLE_ADS_CONVERSION_SEND_TO,
+    });
 }
 
 export function ContactSection() {
@@ -160,6 +178,7 @@ export function ContactSection() {
             body: JSON.stringify(data),
         });
         if (!res.ok) throw new Error("Versturen mislukt");
+        trackContactConversion();
         setSubmitted(true);
     }
 

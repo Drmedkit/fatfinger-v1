@@ -19,7 +19,7 @@ export default function Home() {
   const [colorIndex, setColorIndex] = useState(0);
   // mobile tap state: "hidden" | "hint" (first tap shows hint, second tap scrolls)
   const [mobileTapState, setMobileTapState] = useState<"hidden" | "hint">("hidden");
-  const hideTimerRef = useRef<ReturnType<typeof setTimeout>>();
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const currentColor = BRAND_COLORS[colorIndex];
 

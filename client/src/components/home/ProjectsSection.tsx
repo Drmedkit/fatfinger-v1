@@ -137,12 +137,12 @@ function PoolpartySection() {
     const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
     return (
-        <section ref={ref} className="relative w-full min-h-screen overflow-hidden flex items-end">
+        <section ref={ref} className="relative z-10 isolate w-full min-h-screen overflow-hidden flex items-end bg-black">
             {/* Fade edges */}
             <div className="absolute top-0 left-0 right-0 h-48 z-20 pointer-events-none" style={{ background: "linear-gradient(to bottom, #000 0%, transparent 100%)" }} />
             <div className="absolute bottom-0 left-0 right-0 h-48 z-20 pointer-events-none" style={{ background: "linear-gradient(to top, #000 0%, transparent 100%)" }} />
             {/* Hero foto met parallax */}
-            <motion.div className="absolute inset-0 z-0" style={{ y }}>
+            <motion.div className="absolute inset-0 z-0 overflow-hidden" style={{ y }}>
                 <SmartImage
                     src={poolpartyBg}
                     alt="Poolparty Mysteryland"
@@ -150,8 +150,8 @@ function PoolpartySection() {
                     decoding="async"
                     className="w-full h-full object-cover scale-110"
                 />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #005577 0%, rgba(0,120,180,0.5) 40%, rgba(0,80,120,0.3) 70%, transparent 100%)" }} />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 30%)" }} />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,85,119,0.35) 0%, rgba(0,120,180,0.18) 45%, transparent 75%)" }} />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 32%)" }} />
             </motion.div>
 
             {/* Content — bottom anchored */}
@@ -495,7 +495,7 @@ export function ProjectsSection() {
     usePreloadImageWhenNear(preloadRef, poolpartyBg);
 
     return (
-        <div ref={preloadRef}>
+        <div ref={preloadRef} className="relative z-10 bg-black">
             <ProjectsHeader />
             <ClubMPHSection />
             <PoolpartySection />

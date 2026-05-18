@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, useMotionValue, useTransform, useMotionTemplate } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { ArrowRight, Instagram } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { Link } from "wouter";
 
 // Import assets
@@ -155,11 +155,14 @@ export function HeroSection() {
               <div className="overflow-hidden rounded-[2.5rem] md:rounded-[4rem] shadow-2xl shadow-black/20 aspect-[4/3] bg-black/10 backdrop-blur-sm border border-white/10">
                 <div className="w-full h-full" ref={emblaRef}>
                   <div className="flex h-full">
-                    {SLIDES.map((slide) => (
+                    {SLIDES.map((slide, index) => (
                       <div key={slide.id} className="flex-[0_0_100%] min-w-0 relative">
                           <img 
                             src={slide.src} 
                             alt={slide.alt}
+                            loading={index === 0 ? "eager" : "lazy"}
+                            fetchPriority={index === 0 ? "high" : "auto"}
+                            decoding="async"
                             className="w-full h-full object-cover"
                           />
                       </div>

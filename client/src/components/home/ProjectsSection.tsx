@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import { Volume2, VolumeX } from "lucide-react";
+import { SmartImage } from "@/components/SmartImage";
+import { SmartVideo } from "@/components/SmartVideo";
 
 // Poolparty
 const poolpartyBg = "/images/decibel_edmkevin.jpg";
@@ -14,6 +16,41 @@ const club7_3 = "/images/club7_3.jpg";
 const decibelSpark1 = "/images/decibel_spark1.jpg";
 const decibelSpark2 = "/images/decibel_spark2.jpg";
 const decibelRichard = "/images/decibel_richard.jpg";
+
+function usePreloadImageWhenNear(
+    ref: RefObject<Element | null>,
+    src: string,
+    rootMargin = "2400px 0px"
+) {
+    useEffect(() => {
+        const element = ref.current;
+        if (!element) return;
+
+        const preload = () => {
+            const image = new Image();
+            image.decoding = "async";
+            image.src = src;
+        };
+
+        if (!("IntersectionObserver" in window)) {
+            preload();
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    preload();
+                    observer.disconnect();
+                }
+            },
+            { rootMargin }
+        );
+
+        observer.observe(element);
+        return () => observer.disconnect();
+    }, [ref, rootMargin, src]);
+}
 
 // ─── SECTION HEADER ─────────────────────────────────────────────────────────
 function ProjectsHeader() {
@@ -52,13 +89,16 @@ function ClubMPHSection() {
             <div className="absolute bottom-0 left-0 right-0 h-40 z-20 pointer-events-none" style={{ background: "linear-gradient(to top, #000 0%, transparent 100%)" }} />
             {/* Looping video background */}
             <motion.div className="absolute inset-0 z-0" style={{ y }}>
-                <video
+                <SmartVideo
                     autoPlay muted loop playsInline
+                    warmRootMargin="1800px 0px"
+                    playRootMargin="400px 0px"
                     className="w-full h-full object-cover scale-110"
-                >
-                    <source src="/videos/ClubMPH_mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
-                    <source src="/videos/ClubMPH_desktop.mp4" type="video/mp4" />
-                </video>
+                    sources={[
+                        { src: "/videos/ClubMPH_mobile.mp4", media: "(max-width: 768px)" },
+                        { src: "/videos/ClubMPH_desktop.mp4" },
+                    ]}
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/20" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40" />
             </motion.div>
@@ -103,7 +143,11 @@ function PoolpartySection() {
             <div className="absolute bottom-0 left-0 right-0 h-48 z-20 pointer-events-none" style={{ background: "linear-gradient(to top, #000 0%, transparent 100%)" }} />
             {/* Hero foto met parallax */}
             <motion.div className="absolute inset-0 z-0" style={{ y }}>
-                <img src={poolpartyBg} alt="Poolparty Mysteryland" loading="lazy"
+                <SmartImage
+                    src={poolpartyBg}
+                    alt="Poolparty Mysteryland"
+                    eagerRootMargin="2200px 0px"
+                    decoding="async"
                     className="w-full h-full object-cover scale-110"
                 />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #005577 0%, rgba(0,120,180,0.5) 40%, rgba(0,80,120,0.3) 70%, transparent 100%)" }} />
@@ -235,14 +279,17 @@ function Club7Section() {
                                 style={{ boxShadow: "0 0 40px rgba(243,115,172,0.3), 0 0 80px rgba(254,242,0,0.15)" }}
                                 onClick={toggleSound}
                             >
-                                <video
+                                <SmartVideo
                                     ref={videoRef}
                                     autoPlay muted loop playsInline
+                                    warmRootMargin="1400px 0px"
+                                    playRootMargin="300px 0px"
                                     className="w-full h-full object-cover"
-                                >
-                                    <source src="/videos/Club7vsPaulo_mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
-                                    <source src="/videos/Club7vsPaulo_desktop.mp4" type="video/mp4" />
-                                </video>
+                                    sources={[
+                                        { src: "/videos/Club7vsPaulo_mobile.mp4", media: "(max-width: 768px)" },
+                                        { src: "/videos/Club7vsPaulo_desktop.mp4" },
+                                    ]}
+                                />
                                 {/* Sound hint */}
                                 <div className="absolute bottom-3 right-3 z-10">
                                     <AnimatePresence mode="wait">
@@ -287,6 +334,14 @@ function Club7Section() {
 function DecibelSection() {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [muted, setMuted] = useState(true);
+    const bubbles = useMemo(() => Array.from({ length: 10 }).map((_, i) => ({
+        id: i,
+        width: Math.random() * 120 + 30,
+        height: Math.random() * 120 + 30,
+        left: Math.random() * 100,
+        duration: Math.random() * 8 + 8,
+        delay: Math.random() * 10,
+    })), []);
 
     function toggleSound() {
         if (!videoRef.current) return;
@@ -302,22 +357,22 @@ function DecibelSection() {
             <div className="absolute top-0 left-0 right-0 h-40 z-20 pointer-events-none" style={{ background: "linear-gradient(to bottom, #000 0%, transparent 100%)" }} />
             <div className="absolute bottom-0 left-0 right-0 h-40 z-20 pointer-events-none" style={{ background: "linear-gradient(to top, #000 0%, transparent 100%)" }} />
             {/* Bubbles */}
-            {[...Array(10)].map((_, i) => (
-                <motion.div key={i}
+            {bubbles.map((bubble) => (
+                <motion.div key={bubble.id}
                     className="absolute rounded-full pointer-events-none"
                     style={{
-                        width: Math.random() * 120 + 30,
-                        height: Math.random() * 120 + 30,
-                        left: `${Math.random() * 100}%`,
+                        width: bubble.width,
+                        height: bubble.height,
+                        left: `${bubble.left}%`,
                         bottom: -100,
                         background: "radial-gradient(circle at 30% 30%, rgba(0,242,254,0.15), rgba(79,172,254,0.05))",
                         border: "1px solid rgba(0,242,254,0.15)",
                     }}
                     animate={{ y: -1200, opacity: [0, 0.6, 0] }}
                     transition={{
-                        duration: Math.random() * 8 + 8,
+                        duration: bubble.duration,
                         repeat: Infinity,
-                        delay: Math.random() * 10,
+                        delay: bubble.delay,
                         ease: "linear"
                     }}
                 />
@@ -385,14 +440,17 @@ function DecibelSection() {
                             style={{ boxShadow: "0 0 80px rgba(0,242,254,0.15), 0 0 160px rgba(0,242,254,0.05)", border: "1px solid rgba(0,242,254,0.2)" }}
                             onClick={toggleSound}
                         >
-                            <video
+                            <SmartVideo
                                 ref={videoRef}
                                 autoPlay muted loop playsInline
+                                warmRootMargin="1400px 0px"
+                                playRootMargin="300px 0px"
                                 className="w-full h-auto"
-                            >
-                                <source src="/videos/DecibelWakeup_mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
-                                <source src="/videos/DecibelWakeup_desktop.mp4" type="video/mp4" />
-                            </video>
+                                sources={[
+                                    { src: "/videos/DecibelWakeup_mobile.mp4", media: "(max-width: 768px)" },
+                                    { src: "/videos/DecibelWakeup_desktop.mp4" },
+                                ]}
+                            />
                             {/* Sound hint */}
                             <div className="absolute bottom-3 right-3 z-10">
                                 <AnimatePresence mode="wait">
@@ -433,8 +491,11 @@ function DecibelSection() {
 
 // ─── EXPORT ─────────────────────────────────────────────────────────────────
 export function ProjectsSection() {
+    const preloadRef = useRef<HTMLDivElement>(null);
+    usePreloadImageWhenNear(preloadRef, poolpartyBg);
+
     return (
-        <div>
+        <div ref={preloadRef}>
             <ProjectsHeader />
             <ClubMPHSection />
             <PoolpartySection />

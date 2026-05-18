@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -38,13 +38,13 @@ const VIBE_SLIDES = [
 ];
 
 function BubblesEffect() {
-    const bubbles = Array.from({ length: 15 }).map((_, i) => ({
+    const bubbles = useMemo(() => Array.from({ length: 15 }).map((_, i) => ({
         id: i,
         size: Math.random() * 60 + 20,
         left: Math.random() * 100,
         duration: Math.random() * 5 + 5,
         delay: Math.random() * 5
-    }));
+    })), []);
 
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -76,13 +76,13 @@ function BubblesEffect() {
 }
 
 function ConfettiEffect() {
-    const confetti = Array.from({ length: 30 }).map((_, i) => ({
+    const confetti = useMemo(() => Array.from({ length: 30 }).map((_, i) => ({
         id: i,
         left: Math.random() * 100,
         color: ["#ff0", "#f0f", "#0ff", "#0f0"][Math.floor(Math.random() * 4)],
         duration: Math.random() * 3 + 2,
         delay: Math.random() * 2
-    }));
+    })), []);
 
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -164,6 +164,8 @@ export function VibeSection() {
                                             <img
                                                 src={slide.src}
                                                 alt={slide.alt}
+                                                loading="lazy"
+                                                decoding="async"
                                                 className="w-full h-full object-cover"
                                             />
                                         </div>

@@ -2,32 +2,23 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { metaImagesPlugin } from "./vite-plugin-meta-images";
+
+const allowedHosts = [
+  process.env.REPLIT_DEV_DOMAIN,
+  process.env.REPLIT_INTERNAL_APP_DOMAIN,
+  ...(process.env.VITE_ALLOWED_HOSTS?.split(",") ?? []),
+].filter((host): host is string => Boolean(host?.trim())).map((host) => host.trim());
 
 export default defineConfig({
   plugins: [
     react(),
-    runtimeErrorOverlay(),
     tailwindcss(),
     metaImagesPlugin(),
-    ...(process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID !== undefined
-      ? [
-          await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer(),
-          ),
-          await import("@replit/vite-plugin-dev-banner").then((m) =>
-            m.devBanner(),
-          ),
-        ]
-      : []),
   ],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
-      "@shared": path.resolve(import.meta.dirname, "shared"),
-      "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },
   css: {
@@ -39,10 +30,20 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          carousel: ["embla-carousel-autoplay", "embla-carousel-react"],
+          forms: ["@hookform/resolvers", "react-hook-form", "zod"],
+          motion: ["framer-motion"],
+          react: ["react", "react-dom", "wouter"],
+        },
+      },
+    },
   },
   server: {
-    host: "0.0.0.0",
-    allowedHosts: true,
+    host: process.env.REPL_ID ? "0.0.0.0" : "127.0.0.1",
+    allowedHosts,
     fs: {
       strict: true,
       deny: ["**/.*"],

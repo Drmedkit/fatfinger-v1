@@ -4,5 +4,8 @@ services:
     ports:
       - "1122:5000"
     environment:
-      - NODE_ENV=production
+      NODE_ENV: production
+      GOOGLE_SERVICE_ACCOUNT_EMAIL: ${GOOGLE_SERVICE_ACCOUNT_EMAIL}
+      GOOGLE_PRIVATE_KEY: ${GOOGLE_PRIVATE_KEY}
+      GOOGLE_SHEETS_SPREADSHEET_ID: ${GOOGLE_SHEETS_SPREADSHEET_ID}
     restart: unless-stopped

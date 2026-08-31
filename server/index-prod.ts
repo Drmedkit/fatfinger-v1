@@ -2,7 +2,7 @@ import fs from "node:fs";
 import { type Server } from "node:http";
 import path from "node:path";
 
-import express, { type Express, type Request } from "express";
+import express, { type Express } from "express";
 
 import runApp from "./app";
 

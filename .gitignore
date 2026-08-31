@@ -9,3 +9,5 @@ vite.config.ts.*
 .env.*.local
 .vercel
 .config
+.local/
+*.log

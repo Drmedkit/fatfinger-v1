@@ -5,10 +5,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const contactSchema = z.object({
-    naam: z.string().min(2, "Vul je naam in"),
-    email: z.string().email("Ongeldig e-mailadres"),
-    telefoon: z.string().optional(),
-    bericht: z.string().min(10, "Bericht is te kort"),
+    naam: z.string().trim().min(2, "Vul je naam in").max(100, "Naam is te lang"),
+    email: z.string().trim().max(254, "E-mailadres is te lang").email("Ongeldig e-mailadres"),
+    telefoon: z.string().trim().max(40, "Telefoonnummer is te lang").optional(),
+    bericht: z.string().trim().min(10, "Bericht is te kort").max(5000, "Bericht is te lang"),
 });
 
 type ContactForm = z.infer<typeof contactSchema>;
@@ -131,6 +131,7 @@ function trackContactConversion() {
 
 export function ContactSection() {
     const [submitted, setSubmitted] = useState(false);
+    const [submitError, setSubmitError] = useState<string | null>(null);
     const [berichtFocused, setBerichtFocused] = useState(false);
 
     const { register, handleSubmit, control, setValue, formState: { errors, isSubmitting, isValid } } = useForm<ContactForm>({
@@ -172,14 +173,20 @@ export function ContactSection() {
     const typewriterText = useTypewriter(TYPEWRITER_PHRASES, typewriterActive);
 
     async function onSubmit(data: ContactForm) {
-        const res = await fetch("/api/contact", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-        });
-        if (!res.ok) throw new Error("Versturen mislukt");
-        trackContactConversion();
-        setSubmitted(true);
+        setSubmitError(null);
+
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+            if (!res.ok) throw new Error("Versturen mislukt");
+            trackContactConversion();
+            setSubmitted(true);
+        } catch {
+            setSubmitError("Versturen is niet gelukt. Probeer het opnieuw of neem direct contact met ons op.");
+        }
     }
 
     const inputClass = (hasError: boolean, isOk: boolean) =>
@@ -252,6 +259,7 @@ export function ContactSection() {
                                         <input
                                             {...register("naam")}
                                             placeholder="Naam *"
+                                            maxLength={100}
                                             className={inputClass(!!errors.naam, !!naamHint)}
                                         />
                                     </div>
@@ -280,6 +288,7 @@ export function ContactSection() {
                                             {...register("email")}
                                             placeholder="E-mail *"
                                             type="email"
+                                            maxLength={254}
                                             className={inputClass(!!errors.email, !!emailTypo && !emailTypo.fix)}
                                         />
                                     </div>
@@ -292,6 +301,7 @@ export function ContactSection() {
                                         {...register("telefoon")}
                                         placeholder="Telefoonnummer (optioneel)"
                                         type="tel"
+                                        maxLength={40}
                                         className={inputClass(false, false)}
                                     />
                                 </div>
@@ -310,6 +320,7 @@ export function ContactSection() {
                                         {...register("bericht")}
                                         placeholder={typewriterText + (typewriterActive ? "|" : "")}
                                         rows={5}
+                                        maxLength={5000}
                                         onFocus={() => setBerichtFocused(true)}
                                         onBlur={() => setBerichtFocused(false)}
                                         className="w-full bg-white/5 rounded-xl px-5 py-4 text-white placeholder:text-white/30 focus:outline-none resize-none transition-all duration-500"
@@ -336,6 +347,11 @@ export function ContactSection() {
                                 >
                                     {isSubmitting ? "Versturen..." : isValid ? "VERSTUUR BERICHT" : "Bijna — vul alle velden in"}
                                 </motion.button>
+                                {submitError && (
+                                    <p role="alert" className="text-sm text-red-400 text-center">
+                                        {submitError}
+                                    </p>
+                                )}
                             </motion.form>
                         )}
                     </AnimatePresence>

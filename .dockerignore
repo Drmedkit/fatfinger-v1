@@ -1,0 +1,10 @@
+.git
+.local
+.vercel
+attached_assets
+dist
+node_modules
+*.log
+.env
+.env.*
+!*.example
